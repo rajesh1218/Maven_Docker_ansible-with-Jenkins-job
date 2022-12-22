@@ -1,0 +1,12 @@
+---
+- hosts: dockerhost
+  tasks:
+  - name:  stop the container
+    command: docker stop mytomcat
+  - name: remove the existing conatiner
+    command: docker rm mytomcat
+  - name: remove image
+    command: docker rmi rajesh1218/regapp:latest
+  - name: create contain from docker repo
+    command: docker run -itd --name mytomcat -p 8083:8080 rajesh1218/regapp:latest
+
